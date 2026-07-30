@@ -1,0 +1,458 @@
+﻿Nr,Frage,Modell,Antwort,Quellen,Chroma (s),BM25 (s),Re-Ranking (s),LLM (s),LLM Load (s),Prompt Eval (s),Token Eval (s),Prompt Tokens,Output Tokens,Num Predict,Num Ctx,Num Thread,Gesamt (s),RAM Vor (%),RAM Nach (%)
+1,"Erklär mir bitte, was eine formale Sprache ist.",llama3.2:3b,"## Antwort
+Eine formale Sprache ist eine Menge von Zeichenketten über einem festgelegten Alphabet.
+
+## Erklärung
+Formale Sprachen sind Mengen von Zeichenketten, die durch bestimmte Regeln und Konventionen definiert werden. Sie können sehr einfach oder sehr komplex sein und beschreiben die Struktur und den Inhalt von Strings, arithmetischen Ausdrücken oder anderen Datenformaten.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist kein spezifisches Beispiel für eine formale Sprache enthalten. Es wird jedoch erwähnt, dass die Menge aller (syntaktisch korrekten) regulären Ausdrücke als formale Sprache auffasst werden kann.
+
+## Merksatz
+Formale Sprachen sind ein grundlegendes Konzept in der Informatik und beschreiben die Struktur und den Inhalt von Datenformaten. Sie werden oft verwendet, um die Komplexität von Daten zu reduzieren und sicherzustellen, dass sie korrekt interpretiert werden können.",datenbanken.pdf (S.46); datenbanken.pdf (S.30); datenbanken.pdf (S.53),0.833,0.001,0.0,38.043,8.36,12.571,17.077,873,232,250,1536,6,38.967,76.0,69.0
+2,Ich verstehe Syntax und Semantik nicht. Kannst du das einfach erklären?,llama3.2:3b,"## Antwort
+Syntax und Semantik sind zwei grundlegende Konzepte in der Informatik, die sich um den Aufbau und die Bedeutung von Nachrichten unterscheiden.
+
+## Erklärung
+Syntax bezieht sich auf den Aufbau einer Nachricht, d.h. wie die einzelnen Elemente wie Wörter oder Teile eines Satzes zusammengefasst werden, um eine vollständige Nachricht zu bilden. Semantik hingegen beschäftigt sich mit der Bedeutung dieser Nachrichten, also wie sie kommuniziert werden sollen und was damit gemeint ist.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist kein spezifisches Beispiel für die Syntax oder Semantik einer Nachricht gegeben.",datenbanken.pdf (S.21); datenbanken.pdf (S.18),0.098,0.002,0.0,24.353,4.152,8.989,11.18,665,161,180,1024,6,24.455,76.0,69.0
+3,Was macht eine kontextfreie Grammatik?,llama3.2:3b,"## Kontextfreie Grammatik
+
+Eine kontextfreie Grammatik ist eine Sprache, die von einer kontextfreien Grammatik erzeugt werden kann. Eine kontextfreie Grammatik ist eine Syntaxbeschreibung, die verwendet wird, um den Aufbau einer Zeichenkette als hierarchische Struktur darzustellen.
+
+## Regeln oder Aufbau
+
+Eine kontextfreie Grammatik besteht aus folgenden Elementen:
+
+*   Γ (Startsymbol)
+*   Σ (Zeichenmenge)
+*   R (Rechenregel)
+*   S (Endesymbol)
+
+Die Rechenregel R ist eine Regel, die verwendet wird, um neue Zeichen zu erzeugen. Die Startsymbol Γ und das Endesymbol S sind die Beginn- und Endpunkte der Grammatik.
+
+## Beispiel aus dem Kontext
+
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+
+Eine kontextfreie Grammatik verwendet den senkrechten Strich für die Bildung von Alternativen.",datenbanken.pdf (S.33); datenbanken.pdf (S.28); datenbanken.pdf (S.53),0.126,0.001,0.0,34.051,3.106,13.269,17.657,854,232,300,1536,6,34.178,76.0,69.0
+4,Kannst du mir ein Beispiel für einen regulären Ausdruck zeigen?,llama3.2:3b,"## Antwort
+Reguläre Ausdrücke können als Folge von Operationen auf Strings beschrieben werden. Sie bestehen aus Strings und den Operationen | (Verkettung) und V (Vervollständigung). Ein Beispiel für einen regulären Ausdruck ist {z1} {z1, z2}a {z2, z3} a b {z3}a b a.
+
+## Erklärung
+Reguläre Ausdrücke sind eine Art von Sprachbeschreibung, die verwendet wird, um Sprachen zu definieren. Sie bestehen aus Strings und Operationen wie Verkettung (|) und Vervollständigung (V). Diese Ausdrücke können in Automaten umgewandelt werden, um diese automatisch erkennen zu können.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+Reguläre Ausdrücke beschreiben Sprachen und können in Automaten umgewandelt werden.",datenbanken.pdf (S.66); datenbanken.pdf (S.51); datenbanken.pdf (S.68),0.095,0.003,0.0,24.867,0.322,8.779,15.688,837,220,250,1536,6,24.969,76.0,69.0
+5,Wie funktioniert ein DEA?,llama3.2:3b,"## Begriff / Ziel
+Funktionsweise eines DEA (Deterministischer Automat)
+
+## Regeln oder Aufbau
+Ein DEA besteht aus folgenden Komponenten:
+- Zustandszahlen: Eine Menge von Zuständen, die den Automaten durchläuft.
+- Übergangsbeziehungen: Eine Beziehung zwischen den Zuständen, die bestimmt, wie das nächste Zustand erreicht wird.
+- Akzeptierende Zustände: Ein Zustand, der als akzeptiert gilt.
+
+## Regeln oder Aufbau (Fortsetzung)
+Die Übergangsbeziehungen sind definiert durch eine Tabelle mit den folgenden Spalten:
+- Vorzustand
+- Aktueller Input
+- Nächster Zustand
+
+Im bereitgestellten Skript ist keine detaillierte Beschreibung dieser Tabelle enthalten.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript sind Beispiele für DEA s und ihre Läufe nicht explizit angegeben. Im bereitgestellten Skript ist jedoch ein Beispiel für einen NEA (Nondeterministischer Automat) gegeben, der in 6.2.1 NEA -Simulation mit Mengen diskutiert wird.
+
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+Ein DEA erkennt genau die Strings an",datenbanken.pdf (S.66); datenbanken.pdf (S.60); datenbanken.pdf (S.67),0.07,0.001,0.0,33.852,0.313,10.53,22.953,963,300,300,1536,6,33.926,76.0,69.0
+6,Wann benutzt man einen NEA statt eines DEA?,llama3.2:3b,"## Wann benutzt man einen NEA statt eines DEA?
+
+Ein NEA (Nondeterministic Equivalence Automaton) wird im Gegensatz zu einem DEA (Deterministic Equivalence Automaton) verwendet, wenn die Transformation von einem regulären Ausdruck in einen NEA eine Möglichkeit bietet, den Nichtdeterminismus des NEA zu vermeiden. Dies geschieht durch die Konstruktion eines DEA, das die gleichen Eigenschaften wie der ursprüngliche NEA hat, aber ohne Nichtdeterminismus.
+
+## Regeln oder Aufbau
+
+Ein NEA wird verwendet, wenn man einen deterministischen Automaten haben möchte, kann man einen NEA mittels Mengenzuständen in einen DEA umwandeln. Dieser Prozess simuliert den NEA mit ""Mengen von Zuständen"" und basiert auf der Idee, die Eigenschaften des NEA zu vermeiden.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+Ein NEA wird verwendet, wenn man einen deterministischen Automaten haben möchte.",datenbanken.pdf (S.66); datenbanken.pdf (S.72); datenbanken.pdf (S.67),0.146,0.001,0.0,28.825,0.306,10.245,18.2,940,241,300,1536,6,28.974,76.0,69.0
+7,"Warum sagt man, dass reguläre Ausdrücke und Automaten gleich mächtig sind?",llama3.2:3b,"## Reguläre Ausdrücke und Automaten
+
+### Begriff / Ziel
+
+Reguläre Ausdrücke und Automaten sind gleich mächtig, da sie äquivalent erkennen können.
+
+### Regeln oder Aufbau
+
+Es gibt eine direkte Übersicht über die Transformationen von DEA s (Deterministische Endliche Automaten), NEA s (Nondeterministische Endliche Automaten) und regulären Ausdrücken. Diese Transformationen sind gleichbedeutend, da sie genau dieselben formalen Sprachen erkennen.
+
+### Beispiel aus dem Kontext
+
+Im bereitgestellten Skript ist kein spezifisches Beispiel für die Transformation von DEA s zu NEA s oder umgekehrt enthalten. Im bereitgestellten Skript ist auch kein Beispiel für die Transformation von regulären Ausdrücken zu Automaten enthalten.
+
+### Merksatz
+
+Reguläre Ausdrücke und Automaten sind gleich mächtig, da sie äquivalent erkennen können. Dies setzt voraus, dass der Computer den regulären Ausdruck ""versteht"" und dadurch nach dem entsprechenden Muster suchen kann.",datenbanken.pdf (S.66); datenbanken.pdf (S.57); datenbanken.pdf (S.65),0.1,0.002,0.0,28.31,0.311,9.243,18.695,866,252,300,1536,6,28.413,76.0,69.0
+8,Kannst du mir die Turing-Maschine einfach erklären?,llama3.2:3b,"## Antwort
+Die Turing-Maschine ist ein minimalistisches Modell für Computer, das es ermöglicht, alle Aufgabenstellungen zu lösen, die von Computern wie der TOY-Maschine gelöst werden können.
+
+## Erklärung
+Diese Definition ist im bereitgestellten Skript nicht enthalten. Die Turing-Maschine ist ein Konzept, das verwendet wird, um die Fähigkeiten eines Computers zu verstehen und zu definieren.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+Die Definition der Turing-Maschine ist im bereitgestellten Skript nicht explizit gegeben.",datenbanken.pdf (S.114); datenbanken.pdf (S.117),0.093,0.001,0.0,22.926,3.381,8.912,10.616,651,151,180,1024,6,23.024,76.0,69.0
+9,Warum kann man das Halteproblem nicht lösen?,llama3.2:3b,"## Antwort
+Das Halteproblem ist ein klassisches Problem in der Theoretischen Informatik, das nicht löstbar ist.
+
+## Erklärung
+Dies liegt daran, dass das Halteproblem eine Entscheidungsproblemtyp ist, bei dem es sich um die Frage handelt, ob ein gegebenes Programm über einen bestimmten Zeitraum hinweg laufen wird oder nicht. Da das Halteproblem in der Regel mit einem unendlichen Zeitraum verbunden ist, kann es nicht gelöst werden, da dies eine unendliche Menge von Rechenoperationen erfordern würde.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist kein spezifisches Beispiel für das Halteproblem enthalten.",datenbanken.pdf (S.68); datenbanken.pdf (S.8); datenbanken.pdf (S.15),0.09,0.001,0.0,19.49,0.306,7.431,11.705,737,161,250,1024,6,19.584,76.0,69.0
+10,Was ist der Satz von Rice in einfachen Worten?,llama3.2:3b,"## Definition
+Eine Sprache L ist entscheidbar.
+
+## Erklärung
+Eine Sprache L ist entscheidbar, wenn es eine TM gibt, die immer hält und genau dann eine Eingabe x akzeptiert, wenn x∈ L gilt. Der Satz von Rice besagt, dass eine Sprache genau dann entscheidbar ist, wenn sie für jede TM, die sie hält, auch als Ausgabe berechnet werden kann.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist kein spezifisches Beispiel für eine entscheidbare Sprache enthalten.",datenbanken.pdf (S.132); datenbanken.pdf (S.7); datenbanken.pdf (S.133),0.091,0.001,0.0,16.156,0.312,6.742,9.069,702,129,180,1024,6,16.25,76.0,69.0
+1,"Erklär mir bitte, was eine formale Sprache ist.",gemma2:2b,"## Antwort
+
+Eine formale Sprache ist eine Menge von Zeichenketten. 
+
+
+## Erklärung
+
+Formal Sprachen sind Mengen von Zeichenketten, die bestimmte Regeln und Strukturen erfüllen.  
+
+## Beispiel aus dem Kontext
+
+Im Kontext wird erwähnt, dass formal Sprachen Mengen von Zeichenketten sind. 
+
+## Merksatz
+
+Formale Sprachen beschreiben durch einen kompakten Formalismus.",datenbanken.pdf (S.46); datenbanken.pdf (S.30); datenbanken.pdf (S.53),0.12,0.001,0.0,19.606,4.455,10.429,4.682,705,77,250,1536,6,19.74,69.0,68.3
+2,Ich verstehe Syntax und Semantik nicht. Kannst du das einfach erklären?,gemma2:2b,"## Antwort
+
+Syntax und Semantik sind zwei grundlegende Aspekte der Sprachwissenschaft und Informatik. 
+
+Syntax beschreibt den Aufbau einer Nachricht, also wie die Wörter in einem Satz oder Text zusammengefügt werden.  Semantik hingegen beschäftigt sich mit der Bedeutung dieser Nachrichten. Es geht darum, wie die Worte im Kontext des Satzes oder Textes eine bestimmte Aussage transportieren. 
+
+## Erklärung
+
+Die Syntax und Semantik sind eng miteinander verbunden. Die Syntax liefert den Rahmen für die semantische Interpretation. 
+
+
+## Beispiel aus dem Kontext
+
+Im Kontext wird Syntax und Semantik als zwei verschiedene Aspekte der Sprache beschrieben.  
+ 
+## Merksatz
+
+Syntax und Semantik sind wichtige Konzepte in der Sprachwissenschaft und Informatik, um die Bedeutung von Nachrichten zu verstehen.",datenbanken.pdf (S.21); datenbanken.pdf (S.18),0.086,0.002,0.0,18.879,2.617,6.701,9.542,529,159,180,1024,6,18.968,69.0,68.3
+3,Was macht eine kontextfreie Grammatik?,gemma2:2b,"## Begriff / Ziel
+## Regeln oder Aufbau
+Kontextfreie Grammatiken erzeugen eine grammatikalische Beschreibung einer Sprache, die von kontextfreien Grammatik erzeugt werden kann. 
+
+**Regeln:**  Die Regeln der Grammatik sind in der Regel als senkrechte Strich-Symbole dargestellt. 
+
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten. 
+
+## Merksatz",datenbanken.pdf (S.33); datenbanken.pdf (S.28); datenbanken.pdf (S.53),0.065,0.001,0.0,16.908,2.634,8.635,5.603,673,91,300,1536,6,16.975,69.0,68.3
+4,Kannst du mir ein Beispiel für einen regulären Ausdruck zeigen?,gemma2:2b,"## Antwort
+Reguläre Ausdrücke beschreiben Sprachen. 
+
+## Erklärung
+Ein regulärer Ausdruck ist eine mathematische Formel, die eine Sprache beschreibt.  
+
+## Beispiel aus dem Kontext
+{z1} {z1, z2}a {z2, z3} a b {z3}a b a 
+
+
+## Merksatz
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.",datenbanken.pdf (S.66); datenbanken.pdf (S.51); datenbanken.pdf (S.68),0.084,0.002,0.0,14.597,0.322,8.667,5.535,688,87,250,1536,6,14.685,69.0,68.3
+5,Wie funktioniert ein DEA?,gemma2:2b,"## Begriff / Ziel
+## DEA (Deterministic Finite Automaton)
+## Regeln oder Aufbau
+Ein DEA ist ein Deterministischer endlicher Automat.  Er erkennt eine Sprache mit genau definierten Zuständen, die durch Läufe definiert sind. 
+Der Ablauf eines DEA A auf einem String s wird als Lauf bezeichnet. Der Lauf beschreibt die Reihenfolge der Zustände, die A für s besucht. 
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+
+## Merksatz
+Für jeden DEA A gibt es einen NEA B mit L(A) = L(B) und für jeden NEA A gibt es einen DEA B mit L (A) = L(B).",datenbanken.pdf (S.66); datenbanken.pdf (S.60); datenbanken.pdf (S.67),0.092,0.001,0.0,21.269,0.355,11.372,9.472,784,148,300,1536,6,21.363,69.0,68.3
+6,Wann benutzt man einen NEA statt eines DEA?,gemma2:2b,"## Begriff / Ziel
+## NEA (Nondeterministic Automat)
+## DEA (Deterministic Automat)
+## regulärer Ausdruck
+## Satz von Kleene 
+
+## Regeln oder Aufbau
+Ein NEA ist ein Nondeterminismus-Automat, der durch eine Menge an Zuständen definiert wird. Ein DEA hingegen ist ein Determinismus-Automat, der durch einen deterministischen Zustand definiert wird.  
+ 
+## Beispiel aus dem Kontext
+Im Kontext wird erwähnt, dass für jeden regulären Ausdruck r ein NEA A mit L(r) = L(A) und für jeden NEA A gibt es einen regulären Ausdruck r mit L (A) = L(r) existiert.
+
+## Merksatz
+Ein NEA ist ein Nondeterminismus-Automat, der durch eine Menge an Zuständen definiert wird. Ein DEA hingegen ist ein Determinismus-Automat, der durch einen deterministischen Zustand definiert wird.",datenbanken.pdf (S.66); datenbanken.pdf (S.72); datenbanken.pdf (S.67),0.095,0.002,0.0,22.641,0.307,10.2,12.005,781,185,300,1536,6,22.739,69.0,68.3
+7,"Warum sagt man, dass reguläre Ausdrücke und Automaten gleich mächtig sind?",gemma2:2b,"## Begriff / Ziel
+## Automaten 
+## Regeln oder Aufbau
+Automaten sind deterministische endliche Automaten. Sie arbeiten den String »automatisch« ab und speichern intern »konstant viel Information« auf eine eindeutige Weise. 
+## Definition
+Deterministische endliche Automaten sind Systeme, die einen String in einem definierten Muster verarbeiten. 
+
+## Regeln oder Aufbau
+Automaten können deterministisch endliche Zustände annehmen. 
+
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten. 
+## Merksatz
+Reguläre Ausdrücke und Automaten sind gleich mächtig, da sie genau die selben formalen Sprachen erkennen.",datenbanken.pdf (S.66); datenbanken.pdf (S.57); datenbanken.pdf (S.65),0.13,0.002,0.0,18.691,0.287,9.029,9.294,699,144,300,1536,6,18.825,69.0,68.3
+8,Kannst du mir die Turing-Maschine einfach erklären?,gemma2:2b,"## Antwort
+
+Die Turing-Maschine ist ein minimalistisches Modell der Computerarchitektur, das die Fähigkeit besitzt, alle Aufgaben zu lösen, die von Computern wie der TOY-Maschine gelöst werden können. 
+
+## Erklärung
+
+Die Turing-Maschine basiert auf einem Band und einer Maschine, die in ihrer Funktionsweise an eine klassische Maschine erinnert. Die Maschine liest ein Symbol, auf das der Kopf zeigt, und wandelt sich entsprechend der Eingabe des Symbols.  
+
+## Beispiel aus dem Kontext
+
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten. 
+
+
+## Merksatz
+
+Die Turing-Maschine ermöglicht es uns, die Funktionsweise von Computern zu verstehen.",datenbanken.pdf (S.114); datenbanken.pdf (S.117),0.092,0.002,0.0,17.917,2.63,6.775,8.493,520,140,180,1024,6,18.012,69.0,68.3
+9,Warum kann man das Halteproblem nicht lösen?,gemma2:2b,"## Antwort
+
+Das Halteproblem ist nicht lösbar. 
+
+## Erklärung
+
+Die Information zur Lösbarkeit des Halteproblems ist im bereitgestellten Skript nicht enthalten. 
+
+
+## Beispiel aus dem Kontext
+
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten. 
+
+
+## Merksatz",datenbanken.pdf (S.68); datenbanken.pdf (S.8); datenbanken.pdf (S.15),0.073,0.001,0.0,11.661,0.331,7.546,3.738,588,62,250,1024,6,11.737,69.0,68.3
+10,Was ist der Satz von Rice in einfachen Worten?,gemma2:2b,"## Definition
+Eine berechenbare Funktion ist eine Funktion f, für die es eine Turingmaschine M gibt, die für jede Eingabe x als Ausgabe f(x) = y berechnet.
+
+## Erklärung
+Der Satz von Rice besagt, dass eine Sprache L entscheidbar ist, wenn es eine Turingmaschine M gibt, die immer hält und genau dann eine Eingabe x akzeptiert, wenn x∈ L gilt. 
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+Eine Sprache L ist entscheidbar, wenn es eine TM M gibt, die immer hält und genau dann eine Eingabe x akzeptiert, wenn x∈ L gilt.",datenbanken.pdf (S.132); datenbanken.pdf (S.7); datenbanken.pdf (S.133),0.081,0.001,0.0,16.876,0.312,7.684,8.838,595,145,180,1024,6,16.959,69.0,68.3
+1,"Erklär mir bitte, was eine formale Sprache ist.",qwen2.5:3b,"## Antwort
+Eine formale Sprache ist eine Menge von Zeichenketten, die über einem festgelegten Alphabet definiert sind. Das Alphabet besteht aus bestimmten Symbolen oder Zeichen, die als Grundlage für die Zeichenketten dienen.
+
+## Erklärung
+Diese Information ist im bereitgestellten Skript nicht enthalten.
+
+## Beispiel aus dem Kontext
+Im regulären Ausdruck betrachtet wird eine formale Sprache als Menge von Strings, die über einem Alphabet {a, b} definiert sind. Diese Strings können durch reguläre Ausdrücke beschrieben werden und sind Teil einer kontextfreien Grammatik.
+
+## Merksatz
+Formale Sprachen bestehen aus Zeichenketten über einem festgelegten Alphabet.",datenbanken.pdf (S.46); datenbanken.pdf (S.30); datenbanken.pdf (S.53),0.107,0.001,0.0,30.487,5.412,13.273,11.78,878,169,250,1536,6,30.619,68.3,68.1
+2,Ich verstehe Syntax und Semantik nicht. Kannst du das einfach erklären?,qwen2.5:3b,"## Antwort
+Diese Information ist im bereitgestellten Skript nicht enthalten.
+
+## Erklärung
+Syntax bezieht sich auf die Struktur und Aufbau von Nachrichten, während Semantik darauf abzielt, die Bedeutung einer Nachricht zu verstehen. Syntax beschäftigt sich damit, wie eine Nachricht gebildet werden kann, ohne dass man bereits ihre Bedeutung kennt. Im Gegensatz dazu befasst Semantik sich mit der Frage, was eine bestimmte Nachricht bedeutet.
+
+## Beispiel aus dem Kontext
+Beispielsweise betrachtet Syntax die Struktur eines Programmiercodeausschnitts wie ""if x > 0 then y = x + 1"". Hier ist die Aufbaustruktur klar definiert und unabhängig von der Bedeutung, die das Programm für den Benutzer hat.",datenbanken.pdf (S.21); datenbanken.pdf (S.18),0.093,0.001,0.0,24.338,2.746,9.257,12.316,656,180,180,1024,6,24.433,68.3,68.1
+3,Was macht eine kontextfreie Grammatik?,qwen2.5:3b,"## Begriff / Ziel
+Eine kontextfreie Grammatik ist eine mathematische Struktur zur Beschreibung von Sprachen. Sie besteht aus einer Menge von Symbolen (Γ), einer Menge von Zeichen (Σ), einer Regelnmenge R und einem Startsymbol S.
+
+## Regeln oder Aufbau
+Die Regeln der kontextfreien Grammatik sind in Form von Produktionsregeln dargestellt, die sich auf das Startsymbol beziehen. Diese Produktionsregeln haben den folgenden allgemeinen Ausdruck: A → α, wobei A ein Symbol aus Γ ist und α eine Kombination aus Zeichen aus Σ und weiteren Produktionsregeln aus R ist.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+Eine kontextfreie Grammatik ermöglicht es, die Struktur von Sprachen zu beschreiben, die nicht durch reguläre Sprachen erzeugt werden können. Sie sind jedoch immer eine Teilmenge der Sprache, die durch kontextfreie Sprachen erzeugt wird.",datenbanken.pdf (S.33); datenbanken.pdf (S.28); datenbanken.pdf (S.53),0.069,0.001,0.0,31.383,3.018,11.703,16.63,847,243,300,1536,6,31.454,68.3,68.1
+4,Kannst du mir ein Beispiel für einen regulären Ausdruck zeigen?,qwen2.5:3b,"Diese Information ist im bereitgestellten Skript nicht enthalten.
+
+## Erklärung
+Reguläre Ausdrücke sind eine Methode zur Beschreibung von Sprachen, die durch reguläre Ausdrücke beschreibbare Sprachen gemeint sind. Diese Sprachen bestehen aus allen möglichen Endzeichenketten (Wörtern) über einem gegebenen Alphabet.
+
+## Beispiel aus dem Kontext
+Im Skript wird beispielsweise der folgende reguläre Ausdruck vorgestellt: {z1} {z1, z2}a {z2, z3} a b {z3}a b a. Dieser Ausdruck beschreibt eine Menge von Wörtern, die bestimmte Strukturen aufweisen.
+
+## Merksatz
+Reguläre Ausdrücke können komplexe Strukturen und Regeln definieren, indem sie verschiedene Operationen wie Verkettung (|) und Vereinigung (V) kombiniert verwenden.",datenbanken.pdf (S.66); datenbanken.pdf (S.51); datenbanken.pdf (S.68),0.079,0.001,0.0,25.982,0.26,10.45,15.246,830,220,250,1536,6,26.064,68.3,68.1
+5,Wie funktioniert ein DEA?,qwen2.5:3b,"### Begriff / Ziel
+Ein DEA (Deterministischer Automat) ist ein mathematisches Modell zur Behandlung von Sprachen. Er besteht aus einem endlichen Set von Zuständen, einer Eingabesprache, einem Startzustand und einem akzeptierenden oder verwerfenden Endzustand.
+
+### Regeln oder Aufbau
+Ein DEA ist definiert durch seine Übergangsfunktion, die angibt, welchen Zustand der Automat in Abhängigkeit von der aktuellen Eingabe erreichen wird. Die Übergangsfunktion kann als Tabelle dargestellt werden, bei der jede Zeile für einen bestimmten Zustand und eine bestimmte Eingabe beschreibt, zu welchem neuen Zustand der Automat wechseln wird.
+
+### Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten. 
+
+### Merksatz
+Ein DEA besteht aus einem endlichen Set von Zuständen, einer Übergangsfunktion und einem Start- und Endzustand.",datenbanken.pdf (S.66); datenbanken.pdf (S.60); datenbanken.pdf (S.67),0.076,0.001,0.0,27.419,0.27,11.158,15.963,954,233,300,1536,6,27.497,68.3,68.1
+6,Wann benutzt man einen NEA statt eines DEA?,qwen2.5:3b,"## Begriff / Ziel
+Um NEA (Nondeterministische Automaten) zu verwenden anstelle von DEA (Deterministischen Automaten), wird oft genutzt, wenn es um die Konstruktion eines automatischen Systems geht, das eine bestimmte Menge von Sprachzeichen oder Ausdrücken erkennt. NEA sind besonders nützlich, wenn man nicht sicher ist, welche Läufe ein Nondeterministisches Automaton (NEA) tatsächlich durchführt. Sie können auch als Modell dienen, um die Komplexität der automatischen Systeme zu verstehen.
+
+## Regeln oder Aufbau
+1. **Transformation NEA -> DEA**: Für jeden NEA gibt es einen deterministischen Automaten (DEA), der genau dieselbe Sprache erkennt.
+2. **Transformation DEA -> NEA**: Für jedes DEA gibt es ein NEA, das die gleiche Sprache erkennt.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+NEA werden verwendet, wenn man nicht sicher ist, welche Läufe ein Nondeterministisches Automaton durchführt oder um die Komplexität von automatischen Systemen zu verstehen.",datenbanken.pdf (S.66); datenbanken.pdf (S.72); datenbanken.pdf (S.67),0.075,0.001,0.0,29.821,0.272,10.937,18.582,936,271,300,1536,6,29.898,68.3,68.1
+7,"Warum sagt man, dass reguläre Ausdrücke und Automaten gleich mächtig sind?",qwen2.5:3b,"### Begriff / Ziel
+Reguläre Ausdrücke und Automaten sind gleich mächtig, was bedeutet, dass jede Sprache, die von einem regulären Ausdruck beschrieben werden kann, auch vom entsprechenden Deterministischen Endlichen Automaten (DEA) und jede Sprache, die vom DEA beschrieben wird, auch vom entsprechenden regulären Ausdruck beschrieben werden kann. Diese Gleichmächtigkeit ist eine fundamentale Eigenschaft in der Theorie der formalen Sprachen.
+
+### Regeln oder Aufbau
+Die Macht von regulären Ausdrücken und Automaten beruht auf ihrer gemeinsamen Fähigkeit, bestimmte Strukturen in Texten zu erkennen. Automaten können durch ihre spezifischen Regelungen (wie die Übergangsfunktion) Strukturen beschreiben, während reguläre Ausdrücke durch ihre syntaktische Struktur Strukturen beschreiben.
+
+### Beispiel aus dem Kontext
+Im Kontext der Theorie der formalen Sprachen wird gezeigt, dass jede Sprache, die von einem DEA B mit L(A) = L(B) beschrieben werden kann, auch vom entsprechenden regulären Ausdruck beschrieben werden kann. Gleiches gilt für NEA s und DEA s.
+
+### Merksatz
+Die gleichmächtigkeit zwischen regulären Ausdrücken und Automaten bedeutet, dass sie die selben Sprachen",datenbanken.pdf (S.66); datenbanken.pdf (S.57); datenbanken.pdf (S.65),0.082,0.001,0.0,31.321,0.256,9.889,21.134,858,300,300,1536,6,31.405,68.3,68.1
+8,Kannst du mir die Turing-Maschine einfach erklären?,qwen2.5:3b,"Turing-Maschinen sind ein minimalistisches Modell von Computern, das es ermöglicht, genau zu verstehen, was Computer berechnen können. Sie bestehen aus einem Band mit Zeichen, auf dem die Maschine ihre Eingabe und Ausgabe speichert, einer Maschinenspur, die über das Band wandert, und einer Maschinensteuerung, die den Prozess der Maschine steuert.
+
+Die Turing-Maschine startet mit ihrer Eingabe auf dem Band. Zu jedem Zeitpunkt liest sie das Symbol, auf das der Kopf zeigt. Sie hat eine Maschinensteuerung, die bestimmte Aktionen wie Lesen, Schreiben oder Sprungbefehle beinhaltet.
+
+Diese Maschinen können alle Aufgabenstellungen lösen, die von Computern wie der TOY-Mas",datenbanken.pdf (S.114); datenbanken.pdf (S.117),0.072,0.001,0.0,23.613,2.766,8.951,11.88,642,180,180,1024,6,23.687,68.3,68.1
+9,Warum kann man das Halteproblem nicht lösen?,qwen2.5:3b,"Diese Information ist im bereitgestellten Skript nicht enthalten.
+
+## Antwort
+Das Halteproblem kann nicht gelöst werden, da es sich um ein Entscheidungsproblem handelt, das in der Theorie Informatik als entscheidungsfähig und unentscheidbar klassifiziert wird. Es ist eine wichtige Beispise für Probleme, die in der Praxis nicht lösbar sind, ohne dass man bestimmte Informationen über den Zustand des Systems hat, was im Allgemeinen nicht möglich ist.
+
+## Erklärung
+Das Halteproblem bezieht sich auf ein Automatensystem, bei dem es entscheidet, ob es in einem bestimmten Zustand bleibt. Es wird als unentscheidbar klassifiziert, was bedeutet, dass es in der Theorie Informatik nicht lösbar ist, ohne zusätzliche Informationen über den Zustand des Systems zu haben. Diese Information ist im bereitgestellten Skript nicht enthalten.
+
+## Beispiel aus dem Kontext
+Im Halteproblem wird beispielsweise untersucht, ob ein bestimmter Automatensystem in einem bestimmten Zustand bleibt, ohne dass man",datenbanken.pdf (S.68); datenbanken.pdf (S.8); datenbanken.pdf (S.15),0.079,0.001,0.0,24.918,0.266,7.534,17.081,727,250,250,1024,6,24.999,68.3,68.1
+10,Was ist der Satz von Rice in einfachen Worten?,qwen2.5:3b,"## Definition
+Der Satz von Rice besagt, dass eine Sprache L entscheidbar ist genau dann, wenn es eine Turing-Maschine gibt, die immer haltet und genau dann akzeptiert, wenn die Eingabe x in der Sprache L enthalten ist. In einfachen Worten bedeutet dies: Eine bestimmte Eigenschaft einer Sprache (z.B., dass alle Wörter in dieser Sprache gerade durch 3 teilbar sind) kann entscheidbar sein, wenn es eine Turing-Maschine gibt, die diese Eigenschaft immer prüft und akzeptiert, wenn sie stimmt.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.",datenbanken.pdf (S.132); datenbanken.pdf (S.7); datenbanken.pdf (S.133),0.078,0.001,0.0,18.913,0.272,8.012,10.591,712,153,180,1024,6,18.993,68.3,68.1
+1,"Erklär mir bitte, was eine formale Sprache ist.",mistral,"## Antwort
+Formale Sprachen sind Mengen von Zeichenketten, die über einem festgelegten Alphabet bestehen.
+
+## Erklärung
+Diese Definition wird auf Seite 30 des bereitgestellten Skripts gegeben. Eine formale Sprache ist also eine Menge von Strings, die aus dem Alphabet bestehen, das für diese Sprache festgelegt wurde.
+
+## Beispiel aus dem Kontext
+Das Beispiel einer einfachen formalen Sprache wird auf Seite 46 des Skripts gegeben: {0, 00, 000, }. Dies ist eine Menge von Strings, die nur aus dem Zeichen ""0"" besteht und deren Länge unbeschränkt sein kann.
+
+## Merksatz
+Formale Sprachen sind Mengen von Zeichenketten über einem festgelegten Alphabet.",datenbanken.pdf (S.46); datenbanken.pdf (S.30); datenbanken.pdf (S.53),0.113,0.001,0.0,73.524,9.327,33.466,30.689,972,208,250,1536,6,73.65,68.1,64.3
+2,Ich verstehe Syntax und Semantik nicht. Kannst du das einfach erklären?,mistral,"## Antwort
+Die Syntax und Semantik sind zwei wichtige Aspekte der Sprache, die in vielen Bereichen unterschieden werden.
+
+## Erklärung
+Die Syntax betrifft den Aufbau von Nachrichten. Sie beschäftigt sich mit der korrekten Strukturierung von Wörtern und Sätzen, um eine sprachliche Kommunikation möglich zu machen. Dabei kann man ohne die Bedeutung einer Nachricht verstehen, ob sie richtig aufgebaut ist oder nicht.
+
+Die Semantik beschäftigt sich hingegen mit der Bedeutung einer Nachricht. Sie befasst sich damit, wie eine Nachricht von der Intention des Autors zum Text kommt und was die Nachricht tatsächlich bedeuten",datenbanken.pdf (S.21); datenbanken.pdf (S.18),0.085,0.002,0.0,60.186,8.524,25.486,26.152,738,180,180,1024,6,60.275,68.1,64.3
+3,Was macht eine kontextfreie Grammatik?,mistral,"## Begriff / Ziel
+## Kontextfreie Grammatik
+
+## Regeln oder Aufbau
+Eine kontextfreie Grammatik ist eine Syntaxbeschreibung, die aus vier Teilen besteht: einer Startregel (S), einem Alphabet Σ (die Zeichenmenge), einer Menge von Produktionen R und einem Alphabet Γ (das nicht mit dem Alphabet Σ überschneidet). Die Produktionen haben den Format V → w, wo V ein Terminalzeichen oder eine Variable ist und w eine Folge von Terminalzeichen und Variablen darstellt.
+
+## Beispiel aus dem Kontext (kein Beispiel im Kontext enthalten)
+Im bereitgestellten Skript ist kein Beispiel für eine kontextfreie Grammatik enthalten.
+
+## Merksatz
+Eine kontextfreie Grammatik dient zur Beschreibung von Sprachen, indem sie die Menge aller möglichen Zeichenkombinationen definiert, die in der Sprache zulässig sind.",datenbanken.pdf (S.33); datenbanken.pdf (S.28); datenbanken.pdf (S.53),0.062,0.001,0.0,79.351,8.644,33.211,37.456,943,248,300,1536,6,79.414,68.1,64.3
+4,Kannst du mir ein Beispiel für einen regulären Ausdruck zeigen?,mistral,"## Antwort
+Ein Beispiel für einen regulären Ausdruck ist ""a|b"", der die Sprache über genau einem 'a' oder 'b' beschreibt.
+
+## Erklärung
+Reguläre Ausdrücke bestehen aus Strings und den Operationen |, V erkettung und* (siehe Seite 68). In diesem Beispiel werden die beiden Zeichen 'a' und 'b' durch die Operation ""|"" getrennt.
+
+## Im bereitgestellten Skript ist dazu kein weiteres Beispiel enthalten.",datenbanken.pdf (S.66); datenbanken.pdf (S.51); datenbanken.pdf (S.68),0.082,0.002,0.0,46.077,0.065,26.007,19.953,928,137,250,1536,6,46.163,68.1,64.3
+5,Wie funktioniert ein DEA?,mistral,"## Begriff / Ziel
+## Endlicher Automat (DEA)
+
+## Regeln oder Aufbau
+Ein endlicher Automat (DEA) ist ein mathematisches Modell, das zur Erkennung von Sprachen verwendet wird. Es besteht aus einem Zustandsraum, einer Ausgangs- und Eingangsmenge sowie Übergangsregeln, die den Zustandswechsel bei der Lesung eines Zeichens bestimmen.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist dazu kein Beispiel enthalten.
+
+## Merksatz
+Ein DEA erkennt Sprachen durch die Erkennung von akzeptierenden Läufen, bei denen der Automat in einen endlichen Zustand gelangt und dort bleibt.",datenbanken.pdf (S.66); datenbanken.pdf (S.60); datenbanken.pdf (S.67),0.079,0.001,0.0,60.447,0.067,29.927,30.401,1070,188,300,1536,6,60.529,68.1,64.3
+6,Wann benutzt man einen NEA statt eines DEA?,mistral,"## Begriff / Ziel
+## Verwendung eines Non-deterministischen Endlichen Automaten (NEA) statt eines Deterministischen Endlichen Automaten (DEA)
+
+## Regeln oder Aufbau
+Eine NEA kann verwendet werden, wenn es notwendig ist, eine Sprache zu erkennen, die nicht durch einen deterministischen Automaten erkannt werden kann. Dies geschieht, indem der NEA mehrere mögliche Läufe simultan ausführt und nur dann endet, wenn einer der Läufe akzeptiert.
+
+## Beispiel aus dem Kontext
+Im bereitgestellten Skript ist kein Beispiel enthalten.
+
+## Merksatz
+Man nutzt einen NEA statt eines DEA, um Sprachen zu erkennen, die nicht durch einen deterministischen Automaten erkannt werden können.",datenbanken.pdf (S.66); datenbanken.pdf (S.72); datenbanken.pdf (S.67),0.079,0.002,0.0,62.871,0.072,30.915,31.797,1065,203,300,1536,6,62.955,68.1,64.3
+7,"Warum sagt man, dass reguläre Ausdrücke und Automaten gleich mächtig sind?",mistral,"## Begriff / Ziel
+## Äquivalenz von regulären Ausdrücken und Automaten
+
+## Regeln oder Aufbau
+Die Äquivalenz von regulären Ausdrücken und Automaten bedeutet, dass sie genau die gleichen formalen Sprachen erkennen können. Dies ist durch drei Transformationen zwischen Deterministischen Endlichen Automaten (DEA) und nicht-deterministischen endlichen Automaten (NEA) sowie regulären Ausdrücken gewährleistet:
+
+1. Satz DEA s, NEA s und reguläre Ausdrücke sind gleichbedeutend (DEA s ↔ NEA s ↔ regulärer Ausdruck). Dies bedeutet, dass für jeden DEA A gibt es einen NEA B mit L(A) = L(B) und für jeden NEA A gibt es einen DEA B mit L (A) = L(B).
+
+## Beispiel aus dem Kontext
+[Kein Beispiel im Kontext enthalten]
+
+## Merksatz
+Die Äquivalenz von regulären Ausdrücken und Automaten ermöglicht es, die Machtigkeit der beiden zu vergleichen. Sie sind gleich mächtig, da jede Menge von Strings durch eine Trans",datenbanken.pdf (S.66); datenbanken.pdf (S.57); datenbanken.pdf (S.65),0.078,0.002,0.0,71.467,0.059,27.049,44.296,961,300,300,1536,6,71.548,68.1,64.3
+8,Kannst du mir die Turing-Maschine einfach erklären?,mistral,"## Antwort
+Die Turing-Maschine ist ein mathematisches Modell, das die Berechnungsleistung von Computern beschreibt. Es handelt sich um eine abstrakte Maschine, die auf einer Bandzelle arbeitet und durch einen Kopf bewegt wird. Die Maschine startet mit ihrer Eingabe auf dem Band und liest immer das Symbol an, auf das der Kopf zeigt.
+
+## Erklärung
+Die Turing-Maschine ist ein minimalistisches Modell, das es ermöglicht, genau zu verstehen, was Computer berechnen können. Sie wird durch eine Bandzelle und einen Kopf definiert, der auf der Band zieht und immer das Symbol liest, auf das er zeigt.
+
+## Be",datenbanken.pdf (S.114); datenbanken.pdf (S.117),0.072,0.002,0.0,59.746,8.745,25.423,25.543,735,180,180,1024,6,59.823,68.1,64.3
+9,Warum kann man das Halteproblem nicht lösen?,mistral,"## Antwort
+Die Lösbarkeit des Halteproblems ist im bereitgestellten Skript nicht enthalten. Es wird jedoch erwähnt, dass die Theoretische Informatik Modelle und Ideen für die Umsetzung in der Praxis entwickelt, wobei schnell lösbare Problemstellungen wie das Sortieren von Daten umfassend eingesetzt werden können. Im Allgemeinen nicht lösbares Probleme sind bis auf Randfälle und große Datenmengen handhabbar, was darauf hindeutet, dass das Halteproblem wahrscheinlich zu den im Allgemeinen nicht lösbaren Problemstellungen gehört.
+
+## Erklärung
+Das Halteproblem ist ein Problem in der Theoretischen Informatik, welches fragt, ob für eine gegebene Turingmaschine eine bestimmte Eingabe existiert, die sie endlos ausführt. Es wurde von Alan Turing 1936 eingeführt und ist eines der ersten Probleme, die als unlösbar nach",datenbanken.pdf (S.68); datenbanken.pdf (S.8); datenbanken.pdf (S.15),0.069,0.001,0.0,71.751,0.066,28.584,43.037,814,250,250,1024,6,71.822,68.1,64.3
+10,Was ist der Satz von Rice in einfachen Worten?,mistral,"## Definition
+Die Rice's Theorem besagt, dass eine Sprache L entscheidbar ist, wenn es eine Turingmaschine (TM) gibt, die immer hält und genau dann eine Eingabe x akzeptiert, wenn x∈ L gilt.
+
+## Erklärung
+Die Rice's Theorem ist ein Satz aus der Theorie der Komplexität von Algorithmen, der angibt, dass die Entscheidbarkeit einer Sprache abhängig ist von der Eigenschaften der Sprache selbst. Eine Sprache L ist entscheidbar, wenn es eine Turingmaschine gibt, die für jede Eingabe x als Ausgabe f (x) = y berechnet und immer hält, wenn x∈ L gilt.
+
+## Beispiel",datenbanken.pdf (S.132); datenbanken.pdf (S.7); datenbanken.pdf (S.133),0.105,0.001,0.0,77.648,0.111,47.045,30.425,793,180,180,1024,6,77.755,68.1,64.3
