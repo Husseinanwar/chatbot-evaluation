@@ -11,11 +11,22 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markdown_it import MarkdownIt
 
-
 BASE_DIR = Path(__file__).resolve().parent
-SOURCE_RESULTS_FILE = BASE_DIR.parent / "evaluation" / "results.csv"
+
+# Datei mit den Fragen und Antworten
+SOURCE_RESULTS_FILE = BASE_DIR / "data" / "answers.csv"
+
+# Datei für die Bewertungen
 RATING_RESULTS_FILE = BASE_DIR / "results" / "results.csv"
-EXPECTED_MODELS = ["llama3.2:3b", "gemma2:2b", "qwen2.5:3b", "mistral"]
+
+# Spaltenname -> Modellname
+EXPECTED_MODELS = {
+    "llama": "llama3.2:3b",
+    "gemma": "gemma2:2b",
+    "qwen": "qwen2.5:3b",
+    "mistral": "mistral"
+}
+
 SESSION_COOKIE = "evaluation_v2_session"
 
 app = FastAPI(title="Evaluation der Chatbot-Antworten")
@@ -49,89 +60,58 @@ def question_template_context(
         "error": error
     }
 
-
 def load_questions():
+
     if not SOURCE_RESULTS_FILE.exists():
         raise FileNotFoundError(
-            f"Die Datei {SOURCE_RESULTS_FILE} wurde nicht gefunden. "
-            "Bitte fuehre zuerst die bestehende Evaluation aus, damit "
-            "evaluation/results.csv vorhanden ist."
+            f"{SOURCE_RESULTS_FILE} wurde nicht gefunden."
         )
 
     with open(SOURCE_RESULTS_FILE, "r", encoding="utf-8-sig", newline="") as file:
-        reader = csv.DictReader(file)
-        required_columns = {"Nr", "Frage", "Modell", "Antwort"}
 
-        if not reader.fieldnames or not required_columns.issubset(reader.fieldnames):
-            missing = sorted(required_columns - set(reader.fieldnames or []))
+        reader = csv.DictReader(file)
+
+        required_columns = {
+            "question_id",
+            "question",
+            "llama",
+            "gemma",
+            "qwen",
+            "mistral",
+        }
+
+        if not reader.fieldnames:
+            raise ValueError("answers.csv ist leer.")
+
+        missing = required_columns - set(reader.fieldnames)
+
+        if missing:
             raise ValueError(
-                "evaluation/results.csv hat nicht das erwartete Format. "
-                f"Fehlende Spalten: {', '.join(missing)}"
+                "answers.csv hat nicht das erwartete Format. "
+                f"Fehlende Spalten: {', '.join(sorted(missing))}"
             )
 
-        questions_by_id = {}
-        question_order = []
+        questions = []
 
         for row in reader:
-            question_id = row.get("Nr", "").strip()
-            question = row.get("Frage", "").strip()
-            model = row.get("Modell", "").strip()
-            answer = row.get("Antwort", "").strip()
 
-            if not question_id or not question or not model or not answer:
-                continue
-
-            if model not in EXPECTED_MODELS:
-                raise ValueError(
-                    f"Unbekanntes Modell in evaluation/results.csv: {model}. "
-                    "Erwartet werden llama3.2:3b, gemma2:2b, qwen2.5:3b und mistral."
-                )
-
-            if question_id not in questions_by_id:
-                questions_by_id[question_id] = {
-                    "question_id": question_id,
-                    "question": question,
-                    "answers": {}
+            questions.append(
+                {
+                    "question_id": row["question_id"].strip(),
+                    "question": row["question"].strip(),
+                    "answers": {
+                        EXPECTED_MODELS["llama"]: row["llama"].strip(),
+                        EXPECTED_MODELS["gemma"]: row["gemma"].strip(),
+                        EXPECTED_MODELS["qwen"]: row["qwen"].strip(),
+                        EXPECTED_MODELS["mistral"]: row["mistral"].strip(),
+                    },
                 }
-                question_order.append(question_id)
-
-            existing_question = questions_by_id[question_id]["question"]
-
-            if existing_question != question:
-                raise ValueError(
-                    f"Frage Nr. {question_id} hat unterschiedliche Fragetexte "
-                    "in evaluation/results.csv."
-                )
-
-            if model in questions_by_id[question_id]["answers"]:
-                raise ValueError(
-                    f"Frage Nr. {question_id} enthaelt mehrere Antworten fuer {model}."
-                )
-
-            questions_by_id[question_id]["answers"][model] = answer
-
-    questions = [
-        questions_by_id[question_id]
-        for question_id in question_order
-    ]
-
-    if not questions:
-        raise ValueError(
-            "evaluation/results.csv enthaelt keine auswertbaren Fragen."
-        )
-
-    for question in questions:
-        missing_models = [
-            model
-            for model in EXPECTED_MODELS
-            if model not in question["answers"]
-        ]
-
-        if missing_models:
-            raise ValueError(
-                f"Frage Nr. {question['question_id']} ist unvollstaendig. "
-                "Fehlende Modelle: " + ", ".join(missing_models)
             )
+
+    if len(questions) != 10:
+        raise ValueError(
+            f"answers.csv muss genau 10 Fragen enthalten. Aktuell gefunden: {len(questions)}."
+        )
 
     return questions
 
