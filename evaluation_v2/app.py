@@ -127,7 +127,7 @@ def create_participant_session():
 
     for index in question_order:
         question = questions[index]
-        model = random.choice(EXPECTED_MODELS)
+        model = random.choice(list(EXPECTED_MODELS.values()))
         assigned_questions.append(
             {
                 "question_id": question["question_id"],
