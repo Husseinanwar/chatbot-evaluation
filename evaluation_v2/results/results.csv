@@ -1,11 +1,1 @@
-﻿participant_id,question_id,question,model,rating,timestamp
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,8,Kannst du mir die Turing-Maschine einfach erklären?,llama3.2:3b,8,2026-07-30T11:53:47.430774+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,6,Wann benutzt man einen NEA statt eines DEA?,gemma2:2b,4,2026-07-30T11:54:36.351862+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,1,"Erklär mir bitte, was eine formale Sprache ist.",qwen2.5:3b,5,2026-07-30T11:54:43.839755+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,9,Warum kann man das Halteproblem nicht lösen?,llama3.2:3b,9,2026-07-30T11:54:58.232466+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,4,Kannst du mir ein Beispiel für einen regulären Ausdruck zeigen?,mistral,5,2026-07-30T11:55:07.051738+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,5,Wie funktioniert ein DEA?,mistral,1,2026-07-30T11:55:13.682619+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,7,"Warum sagt man, dass reguläre Ausdrücke und Automaten gleich mächtig sind?",mistral,6,2026-07-30T11:57:10.591099+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,10,Was ist der Satz von Rice in einfachen Worten?,llama3.2:3b,4,2026-07-30T11:57:13.171821+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,3,Was macht eine kontextfreie Grammatik?,qwen2.5:3b,4,2026-07-30T11:57:15.957424+00:00
-32581de4-7ae5-42a3-ab95-8b77f9dfa064,2,Ich verstehe Syntax und Semantik nicht. Kannst du das einfach erklären?,llama3.2:3b,6,2026-07-30T11:57:26.935816+00:00
+﻿
