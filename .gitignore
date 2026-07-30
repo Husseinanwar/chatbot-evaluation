@@ -7,6 +7,7 @@ __pycache__/
 venv/
 
 evaluation_v2/results/*.csv
+evaluation_v2/results/*.db
 
 .DS_Store
 Thumbs.db
