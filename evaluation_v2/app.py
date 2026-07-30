@@ -17,7 +17,7 @@ from markdown_it import MarkdownIt
 
 
 BASE_DIR = Path(__file__).resolve().parent
-SOURCE_RESULTS_FILE = BASE_DIR.parent / "evaluation" / "results.csv"
+SOURCE_RESULTS_FILE = BASE_DIR / "data" / "answars.csv"
 DATABASE_FILE = BASE_DIR / "results" / "results.db"
 EXPECTED_MODELS = ["llama3.2:3b", "gemma2:2b", "qwen2.5:3b", "mistral"]
 SESSION_COOKIE = "evaluation_v2_session"
