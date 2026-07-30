@@ -1,0 +1,10 @@
+Erklär mir bitte, was eine formale Sprache ist.
+Ich verstehe Syntax und Semantik nicht. Kannst du das einfach erklären?
+Was macht eine kontextfreie Grammatik?
+Kannst du mir ein Beispiel für einen regulären Ausdruck zeigen?
+Wie funktioniert ein DEA?
+Wann benutzt man einen NEA statt eines DEA?
+Warum sagt man, dass reguläre Ausdrücke und Automaten gleich mächtig sind?
+Kannst du mir die Turing-Maschine einfach erklären?
+Warum kann man das Halteproblem nicht lösen?
+Was ist der Satz von Rice in einfachen Worten?
