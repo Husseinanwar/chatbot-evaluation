@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frage {{ current_number }} von {{ total_questions }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <main class="page">
+        <section class="card evaluation-card">
+            <header class="evaluation-header">
+                <div>
+                    <p class="eyebrow">Evaluation der Chatbot-Antworten</p>
+                    <h1>Frage {{ current_number }} von {{ total_questions }}</h1>
+                </div>
+                <div class="progress-label">
+                    Fortschritt {{ progress_percent }} %
+                </div>
+            </header>
+
+            <div class="progress-track" aria-label="Fortschritt">
+                <div class="progress-bar" style="width: {{ progress_percent }}%;"></div>
+            </div>
+
+            <article class="content-block">
+                <h2>Frage</h2>
+                <p>{{ question_data.question }}</p>
+            </article>
+
+            <article class="content-block answer-block">
+                <h2>Antwort</h2>
+                <div class="answer-text markdown-body">{{ answer_html | safe }}</div>
+            </article>
+
+            <form method="post" action="/question" class="rating-form">
+                <fieldset>
+                    <legend>Bitte bewerten Sie die Qualitaet der Antwort.</legend>
+
+                    {% if error %}
+                        <p class="form-error">{{ error }}</p>
+                    {% endif %}
+
+                    <div class="rating-grid">
+                        {% for value in range(1, 11) %}
+                            <label class="rating-option">
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    value="{{ value }}"
+                                    {% if selected_rating == value %}checked{% endif %}
+                                >
+                                <span>{{ value }}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+
+                <div class="actions">
+                    <button
+                        class="button button-secondary"
+                        type="submit"
+                        name="action"
+                        value="back"
+                        {% if is_first %}disabled{% endif %}
+                    >
+                        &larr; Zurueck
+                    </button>
+
+                    {% if is_last %}
+                        <button class="button button-primary" type="submit" name="action" value="finish">
+                            Bewertung abschliessen
+                        </button>
+                    {% else %}
+                        <button class="button button-primary" type="submit" name="action" value="next">
+                            Weiter &rarr;
+                        </button>
+                    {% endif %}
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

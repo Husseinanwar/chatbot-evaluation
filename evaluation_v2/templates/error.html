@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evaluation nicht bereit</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <main class="page page-centered">
+        <section class="card start-card">
+            <p class="eyebrow">Hinweis</p>
+            <h1>Evaluation kann nicht gestartet werden</h1>
+            <p class="lead">{{ message }}</p>
+            <a class="button button-secondary" href="/">Zur Startseite</a>
+        </section>
+    </main>
+</body>
+</html>
