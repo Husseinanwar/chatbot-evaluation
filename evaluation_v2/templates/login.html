@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <main class="page page-centered">
+        <section class="card start-card">
+            <p class="eyebrow">Adminbereich</p>
+            <h1>Login</h1>
+            <p class="lead">
+                Bitte geben Sie das Admin-Passwort ein.
+            </p>
+
+            <form method="post" action="/login" class="admin-form">
+                <input type="hidden" name="next_path" value="{{ next_path }}">
+
+                {% if error %}
+                    <p class="form-error">{{ error }}</p>
+                {% endif %}
+
+                <label class="form-label" for="password">Passwort</label>
+                <input
+                    class="text-input"
+                    id="password"
+                    name="password"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <div class="actions single-action">
+                    <button class="button button-primary" type="submit">
+                        Einloggen
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

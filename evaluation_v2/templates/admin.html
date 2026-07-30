@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin - Bewertungen</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <main class="page">
+        <section class="card evaluation-card">
+            <header class="evaluation-header">
+                <div>
+                    <p class="eyebrow">Adminbereich</p>
+                    <h1>Bewertungen</h1>
+                </div>
+                <nav class="admin-nav">
+                    <a class="button button-secondary" href="/statistics">Statistik</a>
+                    <a class="button button-secondary" href="/download">CSV Export</a>
+                    <a class="button button-secondary" href="/logout">Logout</a>
+                </nav>
+            </header>
+
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Teilnehmer-ID</th>
+                            <th>Frage</th>
+                            <th>Frage-ID</th>
+                            <th>Modell</th>
+                            <th>Bewertung</th>
+                            <th>Zeitpunkt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for rating in ratings %}
+                            <tr>
+                                <td class="mono">{{ rating.participant_id }}</td>
+                                <td>{{ rating.question }}</td>
+                                <td>{{ rating.question_id }}</td>
+                                <td>{{ rating.model }}</td>
+                                <td><strong>{{ rating.rating }}</strong></td>
+                                <td class="mono">{{ rating.timestamp }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6" class="empty-cell">
+                                    Es wurden noch keine Bewertungen gespeichert.
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

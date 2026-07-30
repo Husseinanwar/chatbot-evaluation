@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Statistik</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <main class="page">
+        <section class="card evaluation-card">
+            <header class="evaluation-header">
+                <div>
+                    <p class="eyebrow">Adminbereich</p>
+                    <h1>Statistik</h1>
+                </div>
+                <nav class="admin-nav">
+                    <a class="button button-secondary" href="/admin">Bewertungen</a>
+                    <a class="button button-secondary" href="/download">CSV Export</a>
+                    <a class="button button-secondary" href="/logout">Logout</a>
+                </nav>
+            </header>
+
+            <section class="stat-grid">
+                <article class="stat-card">
+                    <span>Anzahl Bewertungen</span>
+                    <strong>{{ total_ratings }}</strong>
+                </article>
+                <article class="stat-card">
+                    <span>Anzahl Teilnehmer</span>
+                    <strong>{{ participant_count }}</strong>
+                </article>
+                <article class="stat-card">
+                    <span>Gesamtdurchschnitt</span>
+                    <strong>
+                        {% if overall_average is not none %}
+                            {{ overall_average | round(2) }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </strong>
+                </article>
+                <article class="stat-card">
+                    <span>Vollstaendig abgeschlossen</span>
+                    <strong>{{ completed_participants }}</strong>
+                </article>
+                <article class="stat-card">
+                    <span>Bestes Modell</span>
+                    <strong>{{ best_model or "-" }}</strong>
+                </article>
+                <article class="stat-card">
+                    <span>Schlechtestes Modell</span>
+                    <strong>{{ worst_model or "-" }}</strong>
+                </article>
+            </section>
+
+            <section class="content-block">
+                <h2>Durchschnitt pro Modell</h2>
+                <div class="table-wrap">
+                    <table class="data-table compact-table">
+                        <thead>
+                            <tr>
+                                <th>Modell</th>
+                                <th>Anzahl</th>
+                                <th>Durchschnitt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in model_stats %}
+                                <tr>
+                                    <td>{{ row.model }}</td>
+                                    <td>{{ row.count }}</td>
+                                    <td>{{ row.average | round(2) }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3" class="empty-cell">
+                                        Noch keine Modelldaten vorhanden.
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                {% if model_stats %}
+                    <div class="bar-chart" aria-label="Durchschnittswerte pro Modell">
+                        {% for row in model_stats %}
+                            <div class="bar-row">
+                                <span class="bar-label">{{ row.model }}</span>
+                                <div class="bar-track">
+                                    <div class="bar-fill" style="width: {{ (row.average / 10 * 100) | round(0) }}%;"></div>
+                                </div>
+                                <span class="bar-value">{{ row.average | round(2) }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </section>
+
+            <section class="content-block">
+                <h2>Durchschnitt pro Frage</h2>
+                <div class="table-wrap">
+                    <table class="data-table compact-table">
+                        <thead>
+                            <tr>
+                                <th>Frage</th>
+                                <th>Durchschnitt</th>
+                                <th>Anzahl Bewertungen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in question_stats %}
+                                <tr>
+                                    <td>{{ row.question }}</td>
+                                    <td>{{ row.average | round(2) }}</td>
+                                    <td>{{ row.count }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3" class="empty-cell">
+                                        Noch keine Fragedaten vorhanden.
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

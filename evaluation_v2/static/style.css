@@ -318,6 +318,148 @@ legend {
     opacity: 0.45;
 }
 
+.admin-form {
+    margin-top: 22px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-weight: 800;
+}
+
+.text-input {
+    width: 100%;
+    min-height: 54px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+}
+
+.text-input:focus {
+    outline: 3px solid rgba(31, 111, 235, 0.16);
+    border-color: var(--primary);
+}
+
+.single-action {
+    justify-content: flex-start;
+}
+
+.admin-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 820px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+.data-table th {
+    background: #f2f5fa;
+    color: #334155;
+    font-size: 0.84rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.data-table tr:hover td {
+    background: #fbfcff;
+}
+
+.compact-table {
+    min-width: 560px;
+}
+
+.mono {
+    font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    font-size: 0.9rem;
+}
+
+.empty-cell {
+    color: var(--muted);
+    text-align: center;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0 0 24px;
+}
+
+.stat-card {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff;
+}
+
+.stat-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.stat-card strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.7rem;
+    line-height: 1.2;
+}
+
+.bar-chart {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.bar-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 64px;
+    align-items: center;
+    gap: 12px;
+}
+
+.bar-label,
+.bar-value {
+    font-weight: 800;
+}
+
+.bar-track {
+    height: 14px;
+    overflow: hidden;
+    background: #e8edf6;
+    border-radius: 999px;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: inherit;
+}
+
 @media (max-width: 760px) {
     body {
         font-size: 16px;
@@ -351,5 +493,19 @@ legend {
 
     .button {
         width: 100%;
+    }
+
+    .admin-nav {
+        justify-content: stretch;
+        margin-top: 16px;
+    }
+
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bar-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
     }
 }
