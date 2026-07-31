@@ -11,3 +11,7 @@ evaluation_v2/results/*.db
 
 .DS_Store
 Thumbs.db
+
+.env
+*.env
+__pycache__/

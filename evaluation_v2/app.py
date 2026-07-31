@@ -1,11 +1,8 @@
 import csv
-import io
 import os
 import random
-import sqlite3
 import uuid
 from hmac import compare_digest
-from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, quote
 
@@ -15,10 +12,21 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markdown_it import MarkdownIt
 
+from dotenv import load_dotenv
+load_dotenv()
+
+from evaluation_v2.database import (
+    SupabaseDatabaseError,
+    build_ratings_csv,
+    ensure_database_ready,
+    fetch_ratings,
+    fetch_statistics,
+    save_rating
+)
+
 
 BASE_DIR = Path(__file__).resolve().parent
 SOURCE_RESULTS_FILE = BASE_DIR / "data" / "answers.csv"
-DATABASE_FILE = BASE_DIR / "results" / "results.db"
 EXPECTED_MODELS = ["llama3.2:3b", "gemma2:2b", "qwen2.5:3b", "mistral"]
 SESSION_COOKIE = "evaluation_v2_session"
 ADMIN_SESSION_COOKIE = "evaluation_v2_admin"
@@ -61,8 +69,8 @@ def load_questions() -> list[dict]:
     if not SOURCE_RESULTS_FILE.exists():
         raise FileNotFoundError(
             f"Die Datei {SOURCE_RESULTS_FILE} wurde nicht gefunden. "
-            "Bitte fuehre zuerst die bestehende Evaluation aus, damit "
-            "evaluation/results.csv vorhanden ist."
+            "Bitte lege evaluation_v2/data/answers.csv mit den Fragen "
+            "und Modellantworten ab."
         )
 
     with open(SOURCE_RESULTS_FILE, "r", encoding="utf-8-sig", newline="") as file:
@@ -72,7 +80,7 @@ def load_questions() -> list[dict]:
         if not reader.fieldnames or not required_columns.issubset(reader.fieldnames):
             missing = sorted(required_columns - set(reader.fieldnames or []))
             raise ValueError(
-                "evaluation/results.csv hat nicht das erwartete Format. "
+                "evaluation_v2/data/answers.csv hat nicht das erwartete Format. "
                 f"Fehlende Spalten: {', '.join(missing)}"
             )
 
@@ -90,7 +98,7 @@ def load_questions() -> list[dict]:
 
             if model not in EXPECTED_MODELS:
                 raise ValueError(
-                    f"Unbekanntes Modell in evaluation/results.csv: {model}. "
+                    f"Unbekanntes Modell in evaluation_v2/data/answers.csv: {model}. "
                     "Erwartet werden llama3.2:3b, gemma2:2b, qwen2.5:3b und mistral."
                 )
 
@@ -107,7 +115,7 @@ def load_questions() -> list[dict]:
             if existing_question != question:
                 raise ValueError(
                     f"Frage Nr. {question_id} hat unterschiedliche Fragetexte "
-                    "in evaluation/results.csv."
+                    "in evaluation_v2/data/answers.csv."
                 )
 
             if model in questions_by_id[question_id]["answers"]:
@@ -124,7 +132,7 @@ def load_questions() -> list[dict]:
 
     if not questions:
         raise ValueError(
-            "evaluation/results.csv enthaelt keine auswertbaren Fragen."
+            "evaluation_v2/data/answers.csv enthaelt keine auswertbaren Fragen."
         )
 
     for question in questions:
@@ -184,202 +192,6 @@ def get_session(request: Request) -> dict | None:
     return SESSIONS.get(session_id)
 
 
-def get_database() -> sqlite3.Connection:
-    DATABASE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    connection = sqlite3.connect(DATABASE_FILE)
-    connection.row_factory = sqlite3.Row
-    return connection
-
-
-def init_database() -> None:
-    with get_database() as connection:
-        connection.execute(
-            """
-            CREATE TABLE IF NOT EXISTS ratings (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                participant_id TEXT NOT NULL,
-                question_id TEXT NOT NULL,
-                question TEXT NOT NULL,
-                model TEXT NOT NULL,
-                rating INTEGER NOT NULL,
-                timestamp TEXT NOT NULL
-            )
-            """
-        )
-        connection.execute(
-            """
-            CREATE UNIQUE INDEX IF NOT EXISTS
-            idx_ratings_participant_question
-            ON ratings (participant_id, question_id)
-            """
-        )
-
-
-def save_rating(participant_id: str, question_data: dict, rating: int) -> None:
-    init_database()
-    timestamp = datetime.now(timezone.utc).isoformat()
-
-    with get_database() as connection:
-        connection.execute(
-            """
-            INSERT INTO ratings (
-                participant_id,
-                question_id,
-                question,
-                model,
-                rating,
-                timestamp
-            )
-            VALUES (?, ?, ?, ?, ?, ?)
-            ON CONFLICT(participant_id, question_id)
-            DO UPDATE SET
-                question = excluded.question,
-                model = excluded.model,
-                rating = excluded.rating,
-                timestamp = excluded.timestamp
-            """,
-            (
-                participant_id,
-                question_data["question_id"],
-                question_data["question"],
-                question_data["model"],
-                rating,
-                timestamp
-            )
-        )
-
-
-def fetch_ratings() -> list[dict]:
-    init_database()
-
-    with get_database() as connection:
-        rows = connection.execute(
-            """
-            SELECT
-                participant_id,
-                question_id,
-                question,
-                model,
-                rating,
-                timestamp
-            FROM ratings
-            ORDER BY timestamp DESC, id DESC
-            """
-        )
-        return [dict(row) for row in rows]
-
-
-def fetch_statistics() -> dict:
-    init_database()
-
-    with get_database() as connection:
-        total_ratings = connection.execute(
-            "SELECT COUNT(*) FROM ratings"
-        ).fetchone()[0]
-        participant_count = connection.execute(
-            "SELECT COUNT(DISTINCT participant_id) FROM ratings"
-        ).fetchone()[0]
-        overall_average = connection.execute(
-            "SELECT AVG(rating) FROM ratings"
-        ).fetchone()[0]
-        model_stats = [
-            dict(row)
-            for row in connection.execute(
-                """
-                SELECT model, COUNT(*) AS count, AVG(rating) AS average
-                FROM ratings
-                GROUP BY model
-                ORDER BY average DESC, model ASC
-                """
-            )
-        ]
-        question_stats = [
-            dict(row)
-            for row in connection.execute(
-                """
-                SELECT question_id, question, COUNT(*) AS count, AVG(rating) AS average
-                FROM ratings
-                GROUP BY question_id, question
-                ORDER BY CAST(question_id AS INTEGER), question_id
-                """
-            )
-        ]
-
-    total_questions = expected_question_count()
-    completed_participants = count_completed_participants(total_questions)
-    best_model = model_stats[0]["model"] if model_stats else None
-    worst_model = model_stats[-1]["model"] if model_stats else None
-
-    return {
-        "total_ratings": total_ratings,
-        "participant_count": participant_count,
-        "overall_average": overall_average,
-        "model_stats": model_stats,
-        "question_stats": question_stats,
-        "best_model": best_model,
-        "worst_model": worst_model,
-        "completed_participants": completed_participants
-    }
-
-
-def expected_question_count() -> int:
-    try:
-        return len(load_questions())
-    except (FileNotFoundError, ValueError):
-        with get_database() as connection:
-            return connection.execute(
-                "SELECT COUNT(DISTINCT question_id) FROM ratings"
-            ).fetchone()[0]
-
-
-def count_completed_participants(total_questions: int) -> int:
-    if total_questions <= 0:
-        return 0
-
-    with get_database() as connection:
-        return connection.execute(
-            """
-            SELECT COUNT(*)
-            FROM (
-                SELECT participant_id
-                FROM ratings
-                GROUP BY participant_id
-                HAVING COUNT(DISTINCT question_id) = ?
-            )
-            """,
-            (total_questions,)
-        ).fetchone()[0]
-
-
-def build_ratings_csv() -> str:
-    output = io.StringIO()
-    writer = csv.writer(output)
-    writer.writerow(
-        [
-            "participant_id",
-            "question_id",
-            "question",
-            "model",
-            "rating",
-            "timestamp"
-        ]
-    )
-
-    for row in fetch_ratings():
-        writer.writerow(
-            [
-                row["participant_id"],
-                row["question_id"],
-                row["question"],
-                row["model"],
-                row["rating"],
-                row["timestamp"]
-            ]
-        )
-
-    return output.getvalue()
-
-
 def is_admin_authenticated(request: Request) -> bool:
     admin_session = request.cookies.get(ADMIN_SESSION_COOKIE)
     return bool(admin_session and admin_session in ADMIN_SESSIONS)
@@ -410,7 +222,10 @@ def render_error(request: Request, message: str) -> Response:
 
 @app.on_event("startup")
 def startup() -> None:
-    init_database()
+    try:
+        ensure_database_ready()
+    except SupabaseDatabaseError as error:
+        print(f"Supabase-Hinweis: {error}")
 
 
 @app.get("/")
@@ -554,7 +369,11 @@ async def submit_question(request: Request) -> Response:
         )
 
     question_data["rating"] = rating
-    save_rating(session["participant_id"], question_data, rating)
+
+    try:
+        save_rating(session["participant_id"], question_data, rating)
+    except SupabaseDatabaseError as error:
+        return render_error(request, str(error))
 
     if action == "finish":
         session["completed"] = True
@@ -585,11 +404,16 @@ def admin(request: Request) -> Response:
     if not is_admin_authenticated(request):
         return admin_redirect(request)
 
+    try:
+        ratings = fetch_ratings()
+    except SupabaseDatabaseError as error:
+        return render_error(request, str(error))
+
     return templates.TemplateResponse(
         request,
         "admin.html",
         {
-            "ratings": fetch_ratings()
+            "ratings": ratings
         }
     )
 
@@ -599,7 +423,11 @@ def download(request: Request) -> Response:
     if not is_admin_authenticated(request):
         return admin_redirect(request)
 
-    csv_content = build_ratings_csv()
+    try:
+        csv_content = build_ratings_csv()
+    except SupabaseDatabaseError as error:
+        return render_error(request, str(error))
+
     return Response(
         content=csv_content,
         media_type="text/csv; charset=utf-8",
@@ -614,8 +442,13 @@ def statistics(request: Request) -> Response:
     if not is_admin_authenticated(request):
         return admin_redirect(request)
 
+    try:
+        statistics_data = fetch_statistics(total_questions=len(load_questions()))
+    except (FileNotFoundError, ValueError, SupabaseDatabaseError) as error:
+        return render_error(request, str(error))
+
     return templates.TemplateResponse(
         request,
         "statistics.html",
-        fetch_statistics()
+        statistics_data
     )
