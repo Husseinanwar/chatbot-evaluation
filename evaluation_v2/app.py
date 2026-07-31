@@ -15,7 +15,7 @@ from markdown_it import MarkdownIt
 from dotenv import load_dotenv
 load_dotenv()
 
-from evaluation_v2.database import (
+from database import (
     SupabaseDatabaseError,
     build_ratings_csv,
     ensure_database_ready,
